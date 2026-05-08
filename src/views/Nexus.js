@@ -24,7 +24,8 @@ const Nexus = () => {
             mpn[dataParse[i][0]] = {
                 mpn: dataParse[i][1],
                 moq: dataParse[i][2],
-                lt: dataParse[i][3]
+                lt: dataParse[i][3],
+                manufacturer: dataParse[i][4] || ''
             }
         }
     }
@@ -95,6 +96,7 @@ const Nexus = () => {
                 if (rowData['PlexusPartNumber'] in mpn) {
                     rowData['MOQ'] = mpn[rowData['PlexusPartNumber']].moq
                     rowData['LT'] = mpn[rowData['PlexusPartNumber']].lt
+                    rowData['Manufacturer'] = mpn[rowData['PlexusPartNumber']].manufacturer
                 }
                 wbData.push(rowData)
                 i++
@@ -119,10 +121,11 @@ const Nexus = () => {
 
         ws['!ref'] = XLSX.utils.encode_range({
             s: { r: 0, c: 0 },
-            e: { r: wbData.length + 1, c: 24 }
+            e: { r: wbData.length + 1, c: 25 }
         })
 
         wbData.forEach((row, i) => {
+            //console.log(row)
             let er = i + 2
             let balanceQty = ''
             let balanceQtyCommit = ''
@@ -130,6 +133,7 @@ const Nexus = () => {
             let weekCounter = ''
             let moq = ''
             let lt = ''
+            let manufacturer = ''
             if (Object.keys(wbData[i]).length > 1) {
                 if (i == 0 || (Object.keys(wbData[i - 1]).length <= 1 && Object.keys(wbData[i - 2]).length <= 1)) {
                     balanceQty = `H${er}+I${er}+O${er}-N${er}`
@@ -142,6 +146,7 @@ const Nexus = () => {
                 weekCounter = `=INT((TODAY()-P${er})/7)`
                 moq = row['MOQ']
                 lt = row['LT']
+                manufacturer = row['Manufacturer']
                 // let marker = `IF(U${er-1}>=0, IF(U${er}<=0, "<-- Highlight row",""),"")`
 
                 let balanceQtyCellRef = XLSX.utils.encode_cell({ r: er - 1, c: 19 })
@@ -150,7 +155,7 @@ const Nexus = () => {
                 let ltCellRef = XLSX.utils.encode_cell({ r: er - 1, c: 22 })
                 let commitEtaCellRef = XLSX.utils.encode_cell({ r: er - 1, c: 23 })
                 let weekCounterCellRef = XLSX.utils.encode_cell({ r: er - 1, c: 24 })
-                // let markerCellRef = XLSX.utils.encode_cell({ r: er - 1, c: 21 })
+                let manufacturerCellRef = XLSX.utils.encode_cell({ r: er - 1, c: 25 })
 
                 ws[balanceQtyCellRef] = { f: balanceQty }
                 ws[balanceQtyCommitCellRef] = { f: balanceQtyCommit }
@@ -158,7 +163,7 @@ const Nexus = () => {
                 ws[weekCounterCellRef] = { f: weekCounter }
                 ws[moqCellRef] = { v: moq }
                 ws[ltCellRef] = { v: lt }
-                // ws[markerCellRef] = { f: marker }
+                ws[manufacturerCellRef] = { v: manufacturer }
             }
         })
 
