@@ -1,6 +1,6 @@
 {
     "homepage": "https://tech.wiselinkapp.com",
-    "name": "file-automation",
+    "name": "wiselink-ops-tools",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
