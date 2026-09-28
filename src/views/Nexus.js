@@ -47,7 +47,7 @@ const Nexus = () => {
 
         for (let i = 1; i < dataParse.length; i++) {
             // Filter JIT
-            if (dataParse[i][5] == "JIT") {
+            if (dataParse[i][5] == "JIT" || dataParse[i][5] == "ARPN") {
                 dataParse[i][3] = parseDate(dataParse[i][3])
                 dataParse[i][12] = parseDate(dataParse[i][12])
                 dataParse[i][15] = parseDate(dataParse[i][15])
