@@ -106,10 +106,9 @@ const PlexusForecast = () => {
 
     return (
         <Box className={classes.root}>
-            <span style={{ fontSize: '30px', marginBottom: '30px', textAlign: 'center' }}>
-                Plexus Forecast Comparison
-            </span>
-            <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '60%' }}>
+            <h1 className={classes.pageTitle}>Plexus Forecast Comparison</h1>
+            <p className={classes.pageLead}>Compare an older forecast with a new one by facility and part.</p>
+            <div className={classes.fileUploadContainer}>
                 <div className={classes.fileUploadWrapper}>
                     <span className={classes.label}>Old file</span>
                     <Input onChange={(event) => onFileChange(event, 1)} type="file" className={classes.fileUpload} />
@@ -119,7 +118,7 @@ const PlexusForecast = () => {
                     <Input onChange={(event) => onFileChange(event, 2)} type="file" className={classes.fileUpload} />
                 </div>
             </div>
-            <div style={{ marginTop: '50px' }}>
+            <div className={classes.actionRow}>
                 <button onClick={() => calculateDifference()} className={classes.download}>
                     Export
                 </button>

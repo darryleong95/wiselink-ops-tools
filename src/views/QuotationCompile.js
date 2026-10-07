@@ -62,34 +62,32 @@ const QuotationCompile = () => {
 
     return (
         <div className={classes.root}>
-            <span style={{ fontSize: '30px', marginBottom: '30px', textAlign: 'center', fontWeight: 'bold' }}>
-                Input Supplier Price
-            </span>
-            <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-                <h3>Your Uploaded File <span style={{ fontWeight: 'bold', color: 'red', fontSize: '20px' }}>MUST</span> follow the following format: </h3>
-                <img alt="Sample Format" src={require('../assets/Format.png')} width={"80%"} style={{ borderRadius: "10px" }} />
-            </div>
-            <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '60%' }}>
-                <div className={classes.fileUploadWrapper} style={{ width: '30%' }}>
+            <h1 className={classes.pageTitle}>Input Supplier Price</h1>
+            <p className={classes.pageLead}>Fill supplier prices into an input workbook from a price list.</p>
+            <div className={classes.fileUploadContainer}>
+                <div className={classes.fileUploadWrapper}>
                     <span className={classes.label}>Input File</span>
                     <Input onChange={(event) => uploadInput(event)} type="file" className={classes.fileUpload} />
                 </div>
-                <div className={classes.fileUploadWrapper} style={{ width: '30%' }}>
+                <div className={classes.fileUploadWrapper}>
                     <span className={classes.label}>Price List</span>
                     <Input onChange={(event) => uploadPricelist(event)} type="file" className={classes.fileUpload} />
                 </div>
             </div>
-            <div style={{ marginTop: '50px' }}>
+            <div className={classes.actionRow}>
                 <button onClick={() => postRequest()} className={classes.download}>
                     Compile
                 </button>
             </div>
+            <div className={classes.formatBlock}>
+                <h3 className={classes.hint}>The price list needs the layout below. The first cell is the part column, and the rest of the header row is quantities.</h3>
+                <img alt="Sample Format" src={require('../assets/Format.png')} className={classes.formatImage} />
+            </div>
             <Backdrop
-                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                sx={{ color: '#dc831b', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={loading}
-                style={{ position: 'absolute', zIndex: 10 }}
             >
-                <CircularProgress color="inherit" />
+                <CircularProgress color="inherit" thickness={2.4} />
             </Backdrop>
         </div>
     );

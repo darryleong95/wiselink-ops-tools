@@ -243,16 +243,15 @@ const Rescheduler = () => {
 
     return (
         <div className={classes.root}>
-            <span style={{ fontSize: '30px', marginBottom: '30px', textAlign: 'center', fontWeight: 'bold' }}>
-                Reschedule Report
-            </span>
-            <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '60%' }}>
+            <h1 className={classes.pageTitle}>Reschedule Report</h1>
+            <p className={classes.pageLead}>Line up the system schedule with the customer reschedule request.</p>
+            <div className={classes.fileUploadContainer}>
                 <div className={classes.fileUploadWrapper}>
                     <span className={classes.label}>Rescheduler upload file</span>
                     <Input onChange={(event) => onFileChange(event)} type="file" className={classes.fileUpload} />
                 </div>
             </div>
-            <div style={{ marginTop: '50px' }}>
+            <div className={classes.actionRow}>
                 <button onClick={() => compile()} className={classes.download}>
                     Export
                 </button>

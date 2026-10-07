@@ -165,24 +165,23 @@ const Compare = () => {
 
   return (
     <div className={classes.root}>
-      <span style={{ fontSize: '30px', marginBottom: '30px', textAlign: 'center' }}>
-        Online Stock Pricing
-      </span>
-      <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '70%' }}>
-        <div className={classes.fileUploadWrapper} style={{ width: '33%' }}>
+      <h1 className={classes.pageTitle}>Online Stock Pricing</h1>
+      <p className={classes.pageLead}>Join the stock list with the latest customer and supplier prices.</p>
+      <div className={classes.fileUploadContainer}>
+        <div className={classes.fileUploadWrapper}>
           <span className={classes.label}>Stock List</span>
           <Input onChange={(event) => onFileChange(event, 1)} type="file" className={classes.fileUpload} />
         </div>
-        <div className={classes.fileUploadWrapper} style={{ width: '33%' }}>
+        <div className={classes.fileUploadWrapper}>
           <span className={classes.label}>Customer Price</span>
           <Input onChange={(event) => onFileChange(event, 2)} type="file" className={classes.fileUpload} />
         </div>
-        <div className={classes.fileUploadWrapper} style={{ width: '33%' }}>
+        <div className={classes.fileUploadWrapper}>
           <span className={classes.label}>Supplier Price</span>
           <Input onChange={(event) => onFileChange(event, 3)} type="file" className={classes.fileUpload} />
         </div>
       </div>
-      <div style={{ marginTop: '50px' }}>
+      <div className={classes.actionRow}>
         <button onClick={downloadFile} className={classes.download}>
           Download
         </button>

@@ -176,10 +176,9 @@ const Nexus = () => {
 
     return (
         <Box className={classes.root}>
-            <span style={{ fontSize: '30px', marginBottom: '30px', textAlign: 'center' }}>
-                Plexus JIT Program
-            </span>
-            <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '60%', fontFamily: "AirbnbCereal-Medium" }}>
+            <h1 className={classes.pageTitle}>Plexus JIT Program</h1>
+            <p className={classes.pageLead}>Filter JIT lines, join the MPN list, and download a working file.</p>
+            <div className={classes.fileUploadContainer}>
                 <div className={classes.fileUploadWrapper}>
                     <span className={classes.label}>Plexus forecast file</span>
                     <Input onChange={(event) => onFileChange(event, 1)} type="file" className={classes.fileUpload} />
@@ -189,7 +188,7 @@ const Nexus = () => {
                     <Input onChange={(event) => onFileChange(event, 2)} type="file" className={classes.fileUpload} />
                 </div>
             </div>
-            <div style={{ marginTop: '50px' }}>
+            <div className={classes.actionRow}>
                 <button onClick={() => downloadFile()} className={classes.download}>
                     Download
                 </button>

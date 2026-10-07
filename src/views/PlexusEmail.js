@@ -136,19 +136,18 @@ const PlexusEmail = () => {
 
     return (
         <div className={classes.root}>
-            <span style={{ fontSize: '30px', marginBottom: '30px', textAlign: 'center' }}>
-                Plexus Email
-            </span>
-            <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '60%' }}>
+            <h1 className={classes.pageTitle}>Plexus Email</h1>
+            <p className={classes.pageLead}>Upload buyer booking details and send the grouped emails.</p>
+            <div className={classes.fileUploadContainer}>
                 <div className={classes.fileUploadWrapper}>
                     <span className={classes.label}>Buyer Booking Details</span>
                     <div className={classes.inputContainer}>
                         <Input onChange={(event) => onFileChange(event, 1)} type="file" className={classes.fileUpload} variant={'filled'} />
-                        <TextField className={classes.fileUpload} label="cc-email" value={ccEmail} onChange={handleCC} rows={1} rowsMax={1} variant={'filled'} />
+                        <TextField className={classes.sideField} label="CC email" value={ccEmail} onChange={handleCC} rows={1} rowsMax={1} />
                     </div>
                 </div>
             </div>
-            <div style={{ marginTop: '50px' }}>
+            <div className={classes.actionRow}>
                 <button onClick={() => sendEmail()} className={classes.download}>
                     Send
                 </button>

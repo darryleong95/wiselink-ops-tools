@@ -156,10 +156,9 @@ const Compile = () => {
 
   return (
     <div className={classes.root}>
-      <span style={{ fontSize: '30px', marginBottom: '30px', textAlign: 'center', fontWeight: 'bold' }}>
-        Price Multiplier
-      </span>
-      <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '60%' }}>
+      <h1 className={classes.pageTitle}>Price Multiplier</h1>
+      <p className={classes.pageLead}>Merge price sheets and apply a markup for each quantity.</p>
+      <div className={classes.fileUploadContainer}>
         <div className={classes.fileUploadWrapper}>
           <span className={classes.label}>File 1</span>
           <Input onChange={(event) => onFileChange(event, true)} type="file" className={classes.fileUpload} />
@@ -169,17 +168,17 @@ const Compile = () => {
           <Input onChange={(event) => onFileChange(event, false)} type="file" disabled={Object.keys(fileA).length === 0} className={classes.fileUpload} />
         </div>
       </div>
-      <section className={classes.fileUploadContainer}>
+      <section className={`${classes.fileUploadContainer} ${classes.stack}`}>
         <span className={classes.label}>
-          Mark Up Value <span style={{ color: 'red', fontSize: '13px' }}>(numbers/ decimal only)</span>
+          Mark up value <span style={{ letterSpacing: '0', textTransform: 'none', color: '#76868b' }}> · numbers or decimals</span>
         </span>
         <div className={Object.keys(q).length !== 0 && classes.inputWrapper}>
           {
             Object.keys(q).map((value) => {
               return (
                 <div key={value} className={classes.input}>
-                  <label style={{ paddingRight: '10px' }}>
-                    Q - {value}
+                  <label>
+                    Q {value}
                   </label>
                   <input type="number" onChange={(e) => updateMultiplier(e.target.value, value)} value={q[value]} />
                 </div>
@@ -189,17 +188,17 @@ const Compile = () => {
         </div>
         {
           Object.keys(q).length === 0 &&
-          <div style={{ width: '100%' }}>
-            <h4 style={{ color: "#333", textTransform: 'uppercase', margin: '0px', opacity:'0.8' }}>[Multiplier fields will display once file is uploaded]</h4>
-          </div>
+          <p className={classes.hint}>Multiplier fields appear once a file is uploaded.</p>
         }
-        <button onClick={() => downloadFile()} className={classes.download} disabled={Object.keys(fileA).length === 0}>
-          Download
-        </button>
+        <div className={classes.actionRow}>
+          <button onClick={() => downloadFile()} className={classes.download} disabled={Object.keys(fileA).length === 0}>
+            Download
+          </button>
+        </div>
       </section>
-      <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-        <h3>Your Uploaded File <span style={{ fontWeight: 'bold', color: 'red', fontSize: '20px' }}>MUST</span> follow the following format: </h3>
-        <img alt="Sample Format" src={require('../assets/Format.png')} width={"80%"} style={{ borderRadius: "10px" }} />
+      <div className={classes.formatBlock}>
+        <h3 className={classes.hint}>Price sheets need the layout below. The first cell is the part column, and the rest of the header row is quantities.</h3>
+        <img alt="Sample Format" src={require('../assets/Format.png')} className={classes.formatImage} />
       </div>
     </div>
   );

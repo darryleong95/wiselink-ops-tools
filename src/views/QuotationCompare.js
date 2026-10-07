@@ -78,42 +78,32 @@ const QuotationCompare = () => {
 
   return (
     <div className={classes.root}>
-      <span style={{ fontSize: '30px', textAlign: 'center', fontWeight: 'bold' }}>
-        Update new Quotation file
-      </span>
-      <span
-        style={{
-          fontSize: '1em',
-          margin: '30px 0px 30px 0px',
-          textAlign: 'left',
-          fontFamily: 'AirbnbCereal-Book',
-        }}
-      >
-        Quotation File Type = Export quotation from system <br />
-        Output file will follow the template of New Quotation. <br />
-        It will add in details from the old file if the CPN &amp; MPN matches. <br />
-      </span>
-      <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '70%' }}>
-        <div className={classes.fileUploadWrapper} style={{ width: '50%' }}>
+      <h1 className={classes.pageTitle}>Update new Quotation file</h1>
+      <ul className={classes.noteList}>
+        <li>Quotation file type is an export from the system.</li>
+        <li>The output follows the template of the new quotation.</li>
+        <li>Details are copied from the old file when the CPN and MPN match.</li>
+      </ul>
+      <div className={classes.fileUploadContainer}>
+        <div className={classes.fileUploadWrapper}>
           <span className={classes.label}>Old File</span>
           <Input onChange={uploadOld} type="file" className={classes.fileUpload} />
         </div>
-        <div className={classes.fileUploadWrapper} style={{ width: '50%' }}>
+        <div className={classes.fileUploadWrapper}>
           <span className={classes.label}>New File</span>
           <Input onChange={uploadNew} type="file" className={classes.fileUpload} />
         </div>
       </div>
-      <div style={{ marginTop: '50px' }}>
+      <div className={classes.actionRow}>
         <button onClick={postRequest} className={classes.download} disabled={loading}>
           Compile
         </button>
       </div>
       <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: '#dc831b', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}
-        style={{ position: 'absolute', zIndex: 10 }}
       >
-        <CircularProgress color="inherit" />
+        <CircularProgress color="inherit" thickness={2.4} />
       </Backdrop>
     </div>
   );

@@ -105,10 +105,9 @@ const JabilForecast = () => {
 
     return (
         <div className={classes.root}>
-            <span style={{ fontSize: '30px', marginBottom: '30px', textAlign: 'center' }}>
-                Jabil Forecast Comparison
-            </span>
-            <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '60%' }}>
+            <h1 className={classes.pageTitle}>Jabil Forecast Comparison</h1>
+            <p className={classes.pageLead}>Compare two Jabil forecasts by buyer part and MPN.</p>
+            <div className={classes.fileUploadContainer}>
                 <div className={classes.fileUploadWrapper}>
                     <span className={classes.label}>Old file</span>
                     <Input onChange={(event) => onFileChange(event, 1)} type="file" className={classes.fileUpload} />
@@ -118,7 +117,7 @@ const JabilForecast = () => {
                     <Input onChange={(event) => onFileChange(event, 2)} type="file" className={classes.fileUpload} />
                 </div>
             </div>
-            <div style={{ marginTop: '50px' }}>
+            <div className={classes.actionRow}>
                 <button onClick={() => calculateDifference()} className={classes.download}>
                     Export
                 </button>

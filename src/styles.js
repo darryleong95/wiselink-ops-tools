@@ -1,15 +1,21 @@
 import { makeStyles } from "@mui/styles";
 
-export const styles = (theme) => ({
+const cardSurface = {
+    background: '#fff',
+    border: '1px solid rgba(31, 56, 100, 0.08)',
+    boxShadow: '0 14px 36px rgba(14, 15, 59, 0.06)',
+};
+
+export const styles = () => ({
     grow: {
         flexGrow: 1,
     },
     linkContainer: {
-        display: 'flex'
+        display: 'flex',
     },
     link: {
         margin: '5px',
-        padding: '10px 20px 10px 20px',
+        padding: '10px 20px',
         backgroundColor: '#f8f8f8',
         color: '#434343',
         textDecoration: 'none',
@@ -18,85 +24,230 @@ export const styles = (theme) => ({
         textTransform: 'uppercase',
         fontSize: '1em',
         fontWeight: 'bold',
-
         '&:hover': {
             backgroundColor: '#d5d5d5',
-            transition: '0.5s',
         },
     },
 
     root: {
-        padding: "0em 1em", 
-        fontFamily: "AirbnbCereal-Bold",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
+        position: 'relative',
+        width: 'min(1040px, 100%)',
+        margin: '0 auto',
+        padding: '12px 4px 72px',
+        fontFamily: 'AirbnbCereal-Book, sans-serif',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'stretch',
+    },
+    pageTitle: {
+        margin: '8px 0 8px',
+        fontFamily: 'AirbnbCereal-Bold, sans-serif',
+        fontWeight: 400,
+        fontSize: 'clamp(1.8rem, 3vw, 2.4rem)',
+        letterSpacing: '-0.04em',
+        lineHeight: 1.1,
+        color: '#0e0f3b',
+        textAlign: 'left',
+    },
+    pageLead: {
+        margin: '0 0 28px',
+        maxWidth: '40rem',
+        color: '#5c6770',
+        fontSize: '1.02rem',
+        lineHeight: 1.6,
+        textAlign: 'left',
+    },
+    noteList: {
+        margin: '0 0 28px',
+        padding: '16px 18px 16px 34px',
+        borderRadius: '12px',
+        background: '#fff6ec',
+        color: '#1d3042',
+        lineHeight: 1.6,
     },
     label: {
-        paddingTop: '5px',
-        paddingBottom: '5px',
+        paddingTop: '0px',
+        paddingBottom: '2px',
         width: '100%',
         textAlign: 'left',
-        fontSize: '1em',
+        fontSize: '0.78rem',
+        letterSpacing: '0.12em',
+        textTransform: 'uppercase',
+        fontFamily: 'AirbnbCereal-Medium, sans-serif',
+        color: '#76868b',
     },
     inputWrapper: {
-        margin: '20px 0px'
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+        gap: '10px',
+        width: '100%',
+        margin: '4px 0 8px',
     },
     input: {
-        padding: '5px'
-    },
-
-    download: {
-        padding: '15px 30px',
-        borderRadius: '8px',
-        fontSize: '1em',
-
-        backgroundColor: 'darkorange',
-        fontFamily: 'AirbnbCereal-Medium',
-
-        color: 'white',
-        border: 'none',
-        transition: '0.5s',
-        textTransform: 'uppercase',
-        '&:hover': {
-            backgroundColor: '#ff6500',
-            transition: '0.5s',
-            cursor: 'pointer'
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: '12px',
+        padding: '10px 12px',
+        borderRadius: '14px',
+        background: '#fff',
+        border: '1px solid rgba(31, 56, 100, 0.1)',
+        color: '#0e0f3b',
+        '& input': {
+            width: '88px',
+            border: '0',
+            borderRadius: '10px',
+            background: '#f4f7fb',
+            padding: '8px 10px',
+            color: '#0e0f3b',
+            fontFamily: 'AirbnbCereal-Medium, sans-serif',
+            outline: 'none',
+        },
+        '& input:focus': {
+            boxShadow: '0 0 0 3px rgba(220, 131, 27, 0.2)',
         },
     },
 
-    fileUploadContainer: {
-        padding: '10px',
-        display: 'flex',
-        flexDirection: 'column',
+    download: {
+        display: 'inline-flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '80%',
+        justifyContent: 'center',
+        boxSizing: 'border-box',
+        minHeight: '44px',
+        padding: '0 22px',
+        borderRadius: '8px',
+        fontSize: '0.95rem',
+        lineHeight: 1,
+        backgroundColor: '#dc831b',
+        fontFamily: 'AirbnbCereal-Medium, sans-serif',
+        letterSpacing: '0.01em',
+        color: '#fff',
+        border: 'none',
+        boxShadow: '0 8px 18px rgba(220, 131, 27, 0.28)',
+        transition: 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.35s ease, box-shadow 0.45s ease',
+        '&:hover': {
+            backgroundColor: '#c47312',
+            transform: 'translateY(-2px)',
+            boxShadow: '0 12px 24px rgba(220, 131, 27, 0.32)',
+            cursor: 'pointer',
+        },
+        '&:active': {
+            transform: 'translateY(0) scale(0.98)',
+        },
+        '&:disabled': {
+            opacity: 0.45,
+            cursor: 'not-allowed',
+            transform: 'none',
+            boxShadow: 'none',
+        },
+        '&:focus-visible': {
+            outline: '2px solid #dc831b',
+            outlineOffset: '3px',
+        },
+    },
+
+    actionRow: {
+        marginTop: '20px',
+        padding: '4px 2px 16px',
+        display: 'flex',
+        alignItems: 'center',
+        overflow: 'visible',
+    },
+
+    fileUploadContainer: {
+        padding: '0',
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'stretch',
+        gap: '16px',
+        width: '100%',
+    },
+    stack: {
+        '&&': {
+            flexDirection: 'column',
+            alignItems: 'stretch',
+        },
+        marginTop: '18px',
+        padding: '22px',
+        borderRadius: '12px',
+        ...cardSurface,
     },
     fileUploadWrapper: {
-        flex: 1,
+        flex: '1 1 240px',
         display: 'flex',
-        // alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        padding: '10px',
+        gap: '14px',
+        padding: '20px',
+        borderRadius: '12px',
+        overflow: 'visible',
+        ...cardSurface,
+        transition: 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease',
+        animation: 'rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both',
+        '&:hover': {
+            transform: 'translateY(-3px)',
+            boxShadow: '0 18px 40px rgba(14, 15, 59, 0.08)',
+        },
+        '&:nth-of-type(2)': {
+            animationDelay: '70ms',
+        },
+        '&:nth-of-type(3)': {
+            animationDelay: '140ms',
+        },
     },
     fileUpload: {
-        height: '60px',
-        backgroundColor: 'white',
+        width: '100%',
+        height: 'auto',
+        overflow: 'visible',
+        backgroundColor: 'transparent',
         border: 'none',
-        flex: 1,
-        margin: '10px'
+        margin: 0,
+        '&:before, &:after': {
+            display: 'none',
+        },
+        '& input': {
+            overflow: 'visible',
+            height: '56px',
+        },
     },
     inputContainer: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-    }
+        gap: '12px',
+        flexWrap: 'wrap',
+        width: '100%',
+    },
+    sideField: {
+        flex: '1 1 220px',
+        margin: 0,
+    },
+    hint: {
+        margin: '0',
+        color: '#76868b',
+        fontSize: '0.95rem',
+        fontWeight: 400,
+        textTransform: 'none',
+        letterSpacing: '0',
+        opacity: 1,
+    },
+    formatBlock: {
+        width: '100%',
+        marginTop: '22px',
+        padding: '22px',
+        borderRadius: '12px',
+        ...cardSurface,
+    },
+    formatImage: {
+        width: '100%',
+        marginTop: '14px',
+        borderRadius: '12px',
+        display: 'block',
+        boxShadow: '0 12px 30px rgba(14, 15, 59, 0.08)',
+    },
 })
 
-// Create a useStyles hook for easy import
 const useStyles = makeStyles(styles);
 export default useStyles;
